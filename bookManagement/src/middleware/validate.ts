@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import { AnyZodObject, ZodError } from "zod";
 
 const validate =
@@ -9,7 +9,7 @@ const validate =
         body: req.body,
         params: req.params,
         query: req.query,
-        headers: req.headers,
+        Headers: req.headers,
       });
       next();
     } catch (error) {

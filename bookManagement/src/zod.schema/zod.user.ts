@@ -7,15 +7,13 @@ export const Registertype = z.object({
         required_error: "username is required",
         invalid_type_error: "please write letters",
       })
-      .max(6, "username must be less than 6")
-      .min(2, "username must be more than two"),
+      .min(3, "username must be more than two"),
     password: z
-      .string({
+      .number({
         required_error: "password is required",
         invalid_type_error: "please write pass word",
       })
-      .max(6, "password must be less than 6")
-      .min(2, "password must be more than two"),
+      .min(3, "password must be more than two"),
   }),
 });
 
@@ -28,9 +26,9 @@ export const Logintype = z.object({
       })
       .max(6, "username must be less than 6")
       .min(2, "username must be more than two"),
-    password: z.string({
+    password: z.number({
       required_error: "password is required",
-      invalid_type_error: "please write pass word",
+      invalid_type_error: "please write number password",
     }),
   }),
 });

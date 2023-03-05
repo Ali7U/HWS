@@ -1,19 +1,16 @@
 import prisma from "../config/db";
 import { Request, Response } from "express";
-// import { v4 as uuidv4 } from "uuid";
 
-export const findUsers = async (req: Request, res: Response) => {
-  let users = await prisma.user.findMany();
-  res.json(users);
-};
+
 export const Register = async (req: Request, res: Response) => {
+    const {username, password} = req.body
   let user = await prisma.user.create({
     data: {
-      username: req.body.username,
-      password: req.body.password,
+      username,
+      password,
     },
   });
-  res.json({ msg: "user created", user: user });
+  res.json({ msg: "user created", "user": user });
 };
 
 export const updateUser = async (req: Request, res: Response) => {
@@ -31,7 +28,7 @@ export const updateUser = async (req: Request, res: Response) => {
   } else {
     console.log("err");
   }
-  res.json({ msg: "Updated seccesful" });
+  res.json({ msg: "Update seccesfully" });
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
@@ -41,7 +38,7 @@ export const deleteUser = async (req: Request, res: Response) => {
         id: req.params.id,
       },
     });
-    res.json({ msg: "Deleted user has been succesfully" });
+    res.json({ msg: "Deleted user has been succesful" });
   } catch (err) {
     res.json({ msg: err });
   }
